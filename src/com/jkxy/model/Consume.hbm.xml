@@ -1,0 +1,25 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="com.jkxy.model.Consume" table="consume">
+		<!-- 生成对象唯一的OID标识符 -->
+		<id name="consumeId" column="consumeId" type="integer">
+			<generator class="identity"/>
+		</id>
+	
+		<many-to-one name="vip" class="com.jkxy.model.Vip" fetch="select">
+			<column name="vipid"></column>
+		</many-to-one>
+		<property name="name" type="java.lang.String"/>
+		<many-to-one name="commodity" class="com.jkxy.model.Commodity" fetch="select">
+			<column name="commodityId"></column>
+		</many-to-one>
+		<property name="commodityName" type="java.lang.String"/>
+		<property name="price" type="big_decimal"/>
+		<property name="practicePrice" type="big_decimal"/>
+		
+	</class>
+
+</hibernate-mapping>

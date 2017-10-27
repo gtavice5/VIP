@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="com.jkxy.model.Vip" table="vip" catalog="db_vip">
+		<!-- 生成对象唯一的OID标识符 -->
+		<id name="vipId" column="vipId" type="integer">
+			<generator class="identity"/>
+		</id>
+	
+
+		<property name="joinTime" type="java.sql.Date"/>
+		<property name="name" type="java.lang.String"/>
+		<property name="age" type="java.lang.Integer"/>
+		<property name="profession" type="java.lang.String"/>
+		
+		<set name="consumes" inverse="true" cascade="all">
+			<key>
+				<column name="vipId"></column>
+			</key>
+			<one-to-many class="com.jkxy.model.Consume"/>
+		</set>
+		
+	</class>
+
+</hibernate-mapping>
